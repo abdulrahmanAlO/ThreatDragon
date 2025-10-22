@@ -5,6 +5,4 @@ services:
       - "8080:8080"
     volumes:
       - "./config.env:/app/.env:ro"
-    environment:
-      ENCRYPTION_KEYS: 3432534534534583742743918267fsdfs546456gdfs
-      ENCRYPTION_JWT_SIGNING_KEY: 3432534534534583742743918267fsdfs546456gdfsss
+    
