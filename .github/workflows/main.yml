@@ -1,0 +1,26 @@
+on:
+  push:
+    branches: ["**"]
+
+jobs:
+  depchecktest:
+    runs-on: ubuntu-latest
+    name: depecheck_test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: update with npm
+        run: npm install
+      - name: Depcheck
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'test'
+          path: '.'
+          format: 'All'
+          out: 'reports'
+          fail_on_error: false
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/reports
